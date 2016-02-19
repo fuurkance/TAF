@@ -1,0 +1,7 @@
+//The author of the cutscene
+author = "Grey Wolf Studio";
+//The BIS loading screen
+loadScreen = "gws_taf_data\data\Images\picture.paa";
+
+#include "defines.hpp"
+#include "customCutscene.hpp"
