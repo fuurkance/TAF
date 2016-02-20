@@ -1,21 +1,5 @@
-enum {
-	DESTRUCTENGINE = 2,
-	DESTRUCTDEFAULT = 6,
-	DESTRUCTWRECK = 7,
-	DESTRUCTTREE = 3,
-	DESTRUCTTENT = 4,
-	STABILIZEDINAXISX = 1,
-	STABILIZEDINAXESXYZ = 4,
-	STABILIZEDINAXISY = 2,
-	STABILIZEDINAXESBOTH = 3,
-	DESTRUCTNO = 0,
-	STABILIZEDINAXESNONE = 0,
-	DESTRUCTMAN = 5,
-	DESTRUCTBUILDING = 1,
-};
-
 class CfgPatches {
-	class GWS_TAF_HeadGear{
+	class gws_taf_headgear {
 		units[] = {};
 		weapons[] = {};
 		requiredVersion = 0.1;
@@ -23,13 +7,12 @@ class CfgPatches {
 	};
 };
 
-class cfgWeapons {
+class CfgWeapons {
 	class ItemCore;	// External class reference
 	class InventoryItem_Base_F;	// External class reference
 	class HeadgearItem;
 	
-	class gws_taf_m88_helmet: ItemCore
-	{
+	class gws_taf_m88_helmet: ItemCore {
 		scope = 2;
 		author = "Grey Wolf Studio";
 		weaponPoolAvailable = 1;
@@ -38,8 +21,7 @@ class cfgWeapons {
 		model = "\gws_taf_units\HeadGear\headgear_helmet_ts";
 		hiddenSelections[] = {"camo"};
 		hiddenSelectionsTextures[] = {"gws_taf_units\HeadGear\data\headgear_helmet_ts_co.paa"};
-		class ItemInfo: HeadgearItem
-		{
+		class ItemInfo: HeadgearItem {
 			mass = 100;
 			allowedSlots[] = {901,605};
 			uniformModel = "\gws_taf_units\HeadGear\gws_taf_m88_helmet.p3d";
@@ -50,8 +32,7 @@ class cfgWeapons {
 		};
 	};
  
-	class gws_taf_cap: ItemCore
-	{
+	class gws_taf_cap: ItemCore {
 		scope = 2;
 		author = "Grey Wolf Studio";
 		weaponPoolAvailable = 1;
@@ -60,8 +41,7 @@ class cfgWeapons {
 		model = "\gws_taf_units\HeadGear\gws_taf_cap";
 		hiddenSelections[] = {"camo"};
 		hiddenSelectionsTextures[] = {"gws_taf_units\HeadGear\data\gws_taf_cap_astb_co.paa"};
-		class ItemInfo: HeadgearItem
-		{
+		class ItemInfo: HeadgearItem {
 			mass = 100;
 			allowedSlots[] = {901,605};
 			uniformModel = "\gws_taf_units\HeadGear\gws_taf_cap.p3d";
@@ -71,8 +51,7 @@ class cfgWeapons {
 			hiddenSelections[] = {"camo"};
 		};
 	};
-	class gws_taf_cap_sby: ItemCore
-	{
+	class gws_taf_cap_sby: ItemCore {
 		scope = 2;
 		author = "Grey Wolf Studio";
 		weaponPoolAvailable = 1;
@@ -81,8 +60,7 @@ class cfgWeapons {
 		model = "\gws_taf_units\HeadGear\gws_taf_cap";
 		hiddenSelections[] = {"camo"};
 		hiddenSelectionsTextures[] = {"gws_taf_units\HeadGear\data\gws_taf_cap_sby_co.paa"};
-		class ItemInfo: HeadgearItem
-		{
+		class ItemInfo: HeadgearItem {
 			mass = 100;
 			allowedSlots[] = {901,605};
 			uniformModel = "\gws_taf_units\HeadGear\gws_taf_cap.p3d";
@@ -93,8 +71,7 @@ class cfgWeapons {
 		};
 	};
 
-	 class gws_taf_maroon_beret_sby : ItemCore 
-    {
+	class gws_taf_maroon_beret_sby : ItemCore {
         author = "Grey Wolf Studio"; 
         scope = 2;
         weaponPoolAvailable = 1;
@@ -114,8 +91,7 @@ class cfgWeapons {
         };
     };
 
-     class gws_taf_maroon_beret_astb : ItemCore 
-    {
+    class gws_taf_maroon_beret_astb : ItemCore {
         author = "Grey Wolf Studio"; 
         scope = 2;
         weaponPoolAvailable = 1;
@@ -135,11 +111,7 @@ class cfgWeapons {
         };
     };
 
-
-    	
-	
-	class gws_taf_ops_core: ItemCore
-	{
+	class gws_taf_ops_core: ItemCore {
 		scope = 2;
 		author = "Grey Wolf Studio";
 		weaponPoolAvailable = 1;
@@ -148,8 +120,7 @@ class cfgWeapons {
 		model = "\gws_taf_units\HeadGear\gws_taf_ops_core";
 		hiddenSelections[] = {"camo"};
 		hiddenSelectionsTextures[] = {"gws_taf_units\HeadGear\data\gws_ops_core_co.paa"};
-		class ItemInfo: HeadgearItem
-		{
+		class ItemInfo: HeadgearItem {
 			mass = 100;
 			allowedSlots[] = {901,605};
 			uniformModel = "\gws_taf_units\HeadGear\gws_taf_ops_core.p3d";

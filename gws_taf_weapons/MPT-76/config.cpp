@@ -1,26 +1,5 @@
-#define _ARMA_
-
-//ndefs=13
-enum {
-	destructengine = 2,
-	destructdefault = 6,
-	destructwreck = 7,
-	destructtree = 3,
-	destructtent = 4,
-	stabilizedinaxisx = 1,
-	stabilizedinaxesxyz = 4,
-	stabilizedinaxisy = 2,
-	stabilizedinaxesboth = 3,
-	destructno = 0,
-	stabilizedinaxesnone = 0,
-	destructman = 5,
-	destructbuilding = 1
-};
-
-class CfgPatches
-{
-	class GWS_Weapons_MPT
-	{
+class CfgPatches {
+	class gws_weapons_mpt {
 		units[] = {};
 		weapons[] = {"GWS_MPT_76"};
 		requiredVersion = 0.1;
@@ -38,10 +17,59 @@ class PointerSlot;
 class asdg_OpticRail1913;
 class asdg_FrontSideRail;
 
-#include "CfgMagazines.hpp"
+class CfgMagazines {
+	class Default;
+	class BulletBase;
+	class 20Rnd_556x45_UW_mag;
+	class CA_LauncherMagazine;
+	
+	class GWS_Magazine : CA_Magazine {
+		scope = 1;
+		value = 1;
+		displayName = "";
+		model = "\A3\weapons_F\ammo\mag_univ.p3d";
+		picture = "";
+		modelSpecial = "";
+		useAction = 0;
+		useActionTitle = "";
+		reloadAction = "";
+		ammo = "";
+		count = 20;
+		type = 256;
+		initSpeed = 900;
+		selectionFireAnim = "zasleh";
+		nameSound = "magazine";
+		maxLeadSpeed = 23;
+		weaponpoolavailable = 1;
+		mass = 7;
+	};
 
-class CfgWeapons
-{
+	class GWS_20rnd_MPT_76_762: GWS_Magazine {
+		scope = 2;
+		author = "Grey Wolf Studio";
+		displayName = "MPT-76 Mag";
+		model = "\gws_taf_weapons\MPT-76\GWS_MPT_Mag.p3d";
+		ammo = "B_762x51_Ball";
+		picture = "\gws_taf_weapons\MPT-76\data\UI\m_mpt_ca.paa";
+		lastRoundsTracer = 4;
+		count = 20;
+		initSpeed = 800;
+	};
+	class GWS_20rnd_MPT_76_762_T: GWS_Magazine {
+		scope = 2;
+		author = "Grey Wolf Studio";
+		displayName = "MPT-76 Mag Tracer";
+		model = "\gws_taf_weapons\MPT-76\GWS_MPT_Mag.p3d";
+		ammo = "B_762x51_Tracer_Green";
+		picture = "\gws_taf_weapons\MPT-76\data\UI\m_mpt_ca_g.paa";
+		lastRoundsTracer = 20;
+		count = 20;
+		initSpeed = 800;
+	};
+	
+};
+
+class CfgWeapons {
 	class ItemCore;
 	class InventoryItem_Base_F;
 	class InventoryOpticsItem_Base_F;
@@ -51,35 +79,26 @@ class CfgWeapons
 	class muzzle_snds_L;
 	
 	class Rifle;
-	class Rifle_Base_F: Rifle
-	{
+	class Rifle_Base_F: Rifle {
 		class WeaponSlotsInfo;
 		class GunParticles;
 	};
-	class Rifle_Long_Base_F: Rifle_Base_F
-	{
+	class Rifle_Long_Base_F: Rifle_Base_F {
 		class WeaponSlotsInfo;
 	};
 	class UGL_F;
 	class Pistol;
-	class Pistol_Base_F: Pistol
-	{
+	class Pistol_Base_F: Pistol {
 		class WeaponSlotsInfo;
 	};
 	class Launcher;
 
-
-	
-	
-	class GWS_MPT_76_Base: Rifle_Base_F
-	{
+	class GWS_MPT_76_Base: Rifle_Base_F {
 		scope = 1;
 		magazines[] = {"GWS_20rnd_MPT_76_762","GWS_20rnd_MPT_76_762_T"};
 
-		class WeaponSlotsInfo: WeaponSlotsInfo
-		{
-			class MuzzleSlot: MuzzleSlot
-			{
+		class WeaponSlotsInfo: WeaponSlotsInfo {
+			class MuzzleSlot: MuzzleSlot {
 				linkProxy = "\A3\data_f\proxies\weapon_slots\MUZZLE";
 				compatibleItems[] = {"muzzle_snds_B"};
 				
@@ -88,16 +107,13 @@ class CfgWeapons
 			class asdg_OpticRail_TS_MPT_76: asdg_OpticRail1913{};
 		};
 		
-		class Library
-		{
+		class Library {
 			libTextDesc = "GWS MPT-76";
 		};
 		reloadAction = "GestureReloadMX";
 
-		class GunParticles: GunParticles
-		{
-			class SecondEffect
-			{
+		class GunParticles: GunParticles {
+			class SecondEffect {
 				positionName = "Nabojnicestart";
 				directionName = "Nabojniceend";
 				effectName = "CaselessAmmoCloud";
@@ -127,89 +143,73 @@ class CfgWeapons
 		drySound[] = {"A3\Sounds_F\arsenal\weapons\LongRangeRifles\DMR_01_Rahim\DMR_01_dry",0.25118864,1,20};
 		reloadMagazineSound[] = {"A3\Sounds_F\arsenal\weapons\LongRangeRifles\DMR_01_Rahim\DMR_01_reload",1.0,1,10};
 		changeFiremodeSound[] = {"A3\Sounds_F\arsenal\weapons\LongRangeRifles\DMR_01_Rahim\DMR_01_firemode",0.31622776,1,5};
-		class Single: Mode_SemiAuto
-		{
+		class Single: Mode_SemiAuto {
 			sounds[] = {"StandardSound","SilencedSound"};
-			class BaseSoundModeType
-			{
+			class BaseSoundModeType {
 				closure1[] = {"A3\Sounds_F\arsenal\weapons\LongRangeRifles\DMR_01_Rahim\DMR_01_closure_01",0.39810717,1.2,30};
 				closure2[] = {"A3\Sounds_F\arsenal\weapons\LongRangeRifles\DMR_01_Rahim\DMR_01_closure_02",0.39810717,1,30};
 				soundClosure[] = {"closure1",0.5,"closure2",0.5};
 			};
-			class StandardSound: BaseSoundModeType
-			{
+			class StandardSound: BaseSoundModeType {
 				begin1[] = {"\gws_taf_weapons\MPT-76\Sound\mpt.wav",1,1,1200};
 				begin2[] = {"\gws_taf_weapons\MPT-76\Sound\mpt.wav",1,1,1200};
 				begin3[] = {"\gws_taf_weapons\MPT-76\Sound\mpt.wav",1,1,1200};
 				soundBegin[] = {"begin1",0.34,"begin2",0.33,"begin3",0.33};
-				class SoundTails
-				{
-					class TailForest
-					{
+				class SoundTails {
+					class TailForest {
 						sound[] = {"A3\Sounds_F\arsenal\weapons\LongRangeRifles\DMR_01_Rahim\DMR_01_tail_forest",1.0,1,2000};
 						frequency = 1;
 						volume = "(1-interior/1.4)*forest";
 					};
-					class TailHouses
-					{
+					class TailHouses {
 						sound[] = {"A3\Sounds_F\arsenal\weapons\LongRangeRifles\DMR_01_Rahim\DMR_01_tail_houses",1.0,1,2000};
 						frequency = 1;
 						volume = "(1-interior/1.4)*houses";
 					};
-					class TailInterior
-					{
+					class TailInterior {
 						sound[] = {"A3\Sounds_F\arsenal\weapons\LongRangeRifles\DMR_01_Rahim\DMR_01_tail_interior",1.9952624,1,2000};
 						frequency = 1;
 						volume = "interior";
 					};
-					class TailMeadows
-					{
+					class TailMeadows {
 						sound[] = {"A3\Sounds_F\arsenal\weapons\LongRangeRifles\DMR_01_Rahim\DMR_01_tail_meadows",1.0,1,2000};
 						frequency = 1;
 						volume = "(1-interior/1.4)*(meadows/2 max sea/2)";
 					};
-					class TailTrees
-					{
+					class TailTrees {
 						sound[] = {"A3\Sounds_F\arsenal\weapons\LongRangeRifles\DMR_01_Rahim\DMR_01_tail_trees",1.0,1,2000};
 						frequency = 1;
 						volume = "(1-interior/1.4)*trees";
 					};
 				};
 			};
-			class SilencedSound: BaseSoundModeType
-			{
+			class SilencedSound: BaseSoundModeType {
 				begin1[] = {"A3\Sounds_F\arsenal\weapons\LongRangeRifles\DMR_01_Rahim\silencer_DMR_01_short_01",1.0,1,600};
 				begin2[] = {"A3\Sounds_F\arsenal\weapons\LongRangeRifles\DMR_01_Rahim\silencer_DMR_01_short_02",1.0,1,600};
 				begin3[] = {"A3\Sounds_F\arsenal\weapons\LongRangeRifles\DMR_01_Rahim\silencer_DMR_01_short_03",1.0,1,600};
 				soundBegin[] = {"begin1",0.33,"begin2",0.33,"begin1",0.34};
-				class SoundTails
-				{
-					class TailForest
-					{
+				class SoundTails {
+					class TailForest {
 						sound[] = {"A3\Sounds_F\arsenal\weapons\LongRangeRifles\DMR_01_Rahim\silencer_DMR_01_tail_forest",1.0,1,600};
 						frequency = 1;
 						volume = "(1-interior/1.4)*forest";
 					};
-					class TailHouses
-					{
+					class TailHouses {
 						sound[] = {"A3\Sounds_F\arsenal\weapons\LongRangeRifles\DMR_01_Rahim\silencer_DMR_01_tail_houses",1.0,1,600};
 						frequency = 1;
 						volume = "(1-interior/1.4)*houses";
 					};
-					class TailInterior
-					{
+					class TailInterior {
 						sound[] = {"A3\Sounds_F\arsenal\weapons\LongRangeRifles\DMR_01_Rahim\silencer_DMR_01_tail_interior",1.0,1,600};
 						frequency = 1;
 						volume = "interior";
 					};
-					class TailMeadows
-					{
+					class TailMeadows {
 						sound[] = {"A3\Sounds_F\arsenal\weapons\LongRangeRifles\DMR_01_Rahim\silencer_DMR_01_tail_meadows",1.0,1,600};
 						frequency = 1;
 						volume = "(1-interior/1.4)*(meadows/2 max sea/2)";
 					};
-					class TailTrees
-					{
+					class TailTrees {
 						sound[] = {"A3\Sounds_F\arsenal\weapons\LongRangeRifles\DMR_01_Rahim\silencer_DMR_01_tail_trees",1.0,1,600};
 						frequency = 1;
 						volume = "(1-interior/1.4)*trees";
@@ -227,89 +227,73 @@ class CfgWeapons
 			maxRange = 500;
 			maxRangeProbab = 0.05;
 		};
-		class FullAuto: Mode_FullAuto
-		{
+		class FullAuto: Mode_FullAuto {
 			sounds[] = {"StandardSound","SilencedSound"};
-			class BaseSoundModeType
-			{
+			class BaseSoundModeType {
 				closure1[] = {"A3\Sounds_F\arsenal\weapons\LongRangeRifles\DMR_01_Rahim\DMR_01_closure_01",0.39810717,1.2,30};
 				closure2[] = {"A3\Sounds_F\arsenal\weapons\LongRangeRifles\DMR_01_Rahim\DMR_01_closure_02",0.39810717,1,30};
 				soundClosure[] = {"closure1",0.5,"closure2",0.5};
 			};
-			class StandardSound: BaseSoundModeType
-			{
+			class StandardSound: BaseSoundModeType {
 				begin1[] = {"\gws_taf_weapons\MPT-76\Sound\mpt.wav",1,1,1200};
 				begin2[] = {"\gws_taf_weapons\MPT-76\Sound\mpt.wav",1,1,1200};
 				begin3[] = {"\gws_taf_weapons\MPT-76\Sound\mpt.wav",1,1,1200};
 				soundBegin[] = {"begin1",0.34,"begin2",0.33,"begin3",0.33};
-				class SoundTails
-				{
-					class TailForest
-					{
+				class SoundTails {
+					class TailForest {
 						sound[] = {"A3\Sounds_F\arsenal\weapons\LongRangeRifles\DMR_01_Rahim\DMR_01_tail_forest",1.0,1,2000};
 						frequency = 1;
 						volume = "(1-interior/1.4)*forest";
 					};
-					class TailHouses
-					{
+					class TailHouses {
 						sound[] = {"A3\Sounds_F\arsenal\weapons\LongRangeRifles\DMR_01_Rahim\DMR_01_tail_houses",1.0,1,2000};
 						frequency = 1;
 						volume = "(1-interior/1.4)*houses";
 					};
-					class TailInterior
-					{
+					class TailInterior {
 						sound[] = {"A3\Sounds_F\arsenal\weapons\LongRangeRifles\DMR_01_Rahim\DMR_01_tail_interior",1.0,1,2000};
 						frequency = 1;
 						volume = "interior";
 					};
-					class TailMeadows
-					{
+					class TailMeadows {
 						sound[] = {"A3\Sounds_F\arsenal\weapons\LongRangeRifles\DMR_01_Rahim\DMR_01_tail_meadows",1.0,1,2000};
 						frequency = 1;
 						volume = "(1-interior/1.4)*(meadows/2 max sea/2)";
 					};
-					class TailTrees
-					{
+					class TailTrees {
 						sound[] = {"A3\Sounds_F\arsenal\weapons\LongRangeRifles\DMR_01_Rahim\DMR_01_tail_trees",1.0,1,2000};
 						frequency = 1;
 						volume = "(1-interior/1.4)*trees";
 					};
 				};
 			};
-			class SilencedSound: BaseSoundModeType
-			{
+			class SilencedSound: BaseSoundModeType {
 				begin1[] = {"A3\Sounds_F\arsenal\weapons\LongRangeRifles\DMR_01_Rahim\silencer_DMR_01_short_01",1.0,1,600};
 				begin2[] = {"A3\Sounds_F\arsenal\weapons\LongRangeRifles\DMR_01_Rahim\silencer_DMR_01_short_02",1.0,1,600};
 				begin3[] = {"A3\Sounds_F\arsenal\weapons\LongRangeRifles\DMR_01_Rahim\silencer_DMR_01_short_03",1.0,1,600};
 				soundBegin[] = {"begin1",0.33,"begin2",0.33,"begin1",0.34};
-				class SoundTails
-				{
-					class TailForest
-					{
+				class SoundTails {
+					class TailForest {
 						sound[] = {"A3\Sounds_F\arsenal\weapons\LongRangeRifles\DMR_01_Rahim\silencer_DMR_01_tail_forest",1.0,1,600};
 						frequency = 1;
 						volume = "(1-interior/1.4)*forest";
 					};
-					class TailHouses
-					{
+					class TailHouses {
 						sound[] = {"A3\Sounds_F\arsenal\weapons\LongRangeRifles\DMR_01_Rahim\silencer_DMR_01_tail_houses",1.0,1,600};
 						frequency = 1;
 						volume = "(1-interior/1.4)*houses";
 					};
-					class TailInterior
-					{
+					class TailInterior {
 						sound[] = {"A3\Sounds_F\arsenal\weapons\LongRangeRifles\DMR_01_Rahim\silencer_DMR_01_tail_interior",1.0,1,600};
 						frequency = 1;
 						volume = "interior";
 					};
-					class TailMeadows
-					{
+					class TailMeadows {
 						sound[] = {"A3\Sounds_F\arsenal\weapons\LongRangeRifles\DMR_01_Rahim\silencer_DMR_01_tail_meadows",1.0,1,600};
 						frequency = 1;
 						volume = "(1-interior/1.4)*(meadows/2 max sea/2)";
 					};
-					class TailTrees
-					{
+					class TailTrees {
 						sound[] = {"A3\Sounds_F\arsenal\weapons\LongRangeRifles\DMR_01_Rahim\silencer_DMR_01_tail_trees",1.0,1,600};
 						frequency = 1;
 						volume = "(1-interior/1.4)*trees";
@@ -328,8 +312,7 @@ class CfgWeapons
 			maxRangeProbab = 0.05;
 			aiRateOfFire = 1e-006;
 		};
-		class single_close_optics1: Single
-		{
+		class single_close_optics1: Single {
 			requiredOpticType = 1;
 			showToPlayer = 0;
 			minRange = 2;
@@ -341,8 +324,7 @@ class CfgWeapons
 			aiRateOfFire = 2;
 			aiRateOfFireDistance = 300;
 		};
-		class single_medium_optics1: single_close_optics1
-		{
+		class single_medium_optics1: single_close_optics1 {
 			minRange = 300;
 			minRangeProbab = 0.05;
 			midRange = 500;
@@ -352,8 +334,7 @@ class CfgWeapons
 			aiRateOfFire = 2;
 			aiRateOfFireDistance = 500;
 		};
-		class single_far_optics1: single_medium_optics1
-		{
+		class single_far_optics1: single_medium_optics1 {
 			requiredOpticType = 2;
 			minRange = 300;
 			minRangeProbab = 0.05;
@@ -364,8 +345,7 @@ class CfgWeapons
 			aiRateOfFire = 4;
 			aiRateOfFireDistance = 600;
 		};
-		class fullauto_medium: FullAuto
-		{
+		class fullauto_medium: FullAuto {
 			showToPlayer = 0;
 			burst = 3;
 			minRange = 2;
@@ -377,8 +357,7 @@ class CfgWeapons
 			aiRateOfFire = 2.0;
 		};
 		
-		class GWS_T40: UGL_F
-		{
+		class GWS_T40: UGL_F {
 			displayName = "T40 Grenade Launcher";
 			descriptionShort = "T70 Grenade Launcher";
 			useModelOptics = 0;
@@ -395,8 +374,7 @@ class CfgWeapons
 		aiDispersionCoefX = 4.0;
 	};
 	
-	class GWS_MPT_76: GWS_MPT_76_BASE
-	{
+	class GWS_MPT_76: GWS_MPT_76_BASE {
 		scope = 2;
 		author = "Grey Wolf Studio";
 		displayName = "MPT-76";
@@ -405,18 +383,13 @@ class CfgWeapons
 		UiPicture = "\A3\weapons_f\data\UI\icon_regular_CA.paa";
 		handAnim[] = {"OFP2_ManSkeleton","\A3\Weapons_F\Rifles\MX\data\Anim\MX_cqc.rtm"};
 
-		class WeaponSlotsInfo: WeaponSlotsInfo
-		{
-			class MuzzleSlot: MuzzleSlot
-			{
+		class WeaponSlotsInfo: WeaponSlotsInfo {
+			class MuzzleSlot: MuzzleSlot {
 				
 			};
-			class CowsSlot: CowsSlot
-			{
-				
-					access=1;
-				compatibleitems[]=
-				{
+			class CowsSlot: CowsSlot {
+				access=1;
+				compatibleitems[]= {
 					"optic_Arco",
 					"optic_aco",
 					"optic_ACO_grn",
@@ -424,44 +397,37 @@ class CfgWeapons
 					"optic_Holosight",
 					"optic_SOS",
 					"rhsusf_acc_M2010S", //Suppressor M2010S     
-"rhsusf_acc_rotex5_grey", // Suppressor rotex 5 (grey)     
-"rhsusf_acc_rotex5_tan", // Suppressor rotex 5 (tan)     
-"rhsusf_acc_SFMB556",  // Surfire SFMB     
-"rhsusf_acc_SF3P556",  // Surfire SF3P rotex 5     
-"rhsusf_acc_anpeq15",  // AN/PEQ-15         
-"rhsusf_acc_anpeq15A", // AN/PEQ-15A     
-"rhsusf_acc_anpeq15_light", //    AN/PEQ-15/M952V (Light)     
-"rhsusf_acc_EOTECH",     // EOtech XPS3     
-"rhsusf_acc_eotech_552",  // EOtech M552     
-"rhsusf_acc_LEUPOLDMK4",     // Leupold Mk4 (3.5-10x40mm)*     
-"rhsusf_acc_LEUPOLDMK4_2",  // Leupold Mk4 (6.5-20x50mm)     
-"rhsusf_acc_ELCAN",   //M145 MGO Elcan     
-"rhsusf_acc_ELCAN_PIP", // M145 MGO Elcan (PiP)     
-"rhsusf_acc_ACOG",  //    M150 RCO ACOG     
-"rhsusf_acc_ACOG_PIP", //    M150 RCO ACOG (PiP)     
-"rhsusf_acc_ACOG2", // M150 RCO ACOG (ARD)     
-"rhsusf_acc_ACOG3", // M150 RCO ACOG (ARD/Lens Cover)     
-"rhsusf_acc_ACOG_USMC", // AN/PVQ-31     
-"rhsusf_acc_ACOG2_USMC", // AN/PVQ-31 (ARD)     
-"rhsusf_acc_ACOG3_USMC", // AN/PVQ-31 (ARD/Lens Cover)         
-"rhsusf_acc_compm4",  // M68 CCO Aimpoint M4   
+					"rhsusf_acc_rotex5_grey", //Suppressor rotex 5 (grey)     
+					"rhsusf_acc_rotex5_tan", //Suppressor rotex 5 (tan)     
+					"rhsusf_acc_SFMB556", //Surfire SFMB     
+					"rhsusf_acc_SF3P556", //Surfire SF3P rotex 5     
+					"rhsusf_acc_anpeq15", //AN/PEQ-15         
+					"rhsusf_acc_anpeq15A", //AN/PEQ-15A     
+					"rhsusf_acc_anpeq15_light", //AN/PEQ-15/M952V (Light)     
+					"rhsusf_acc_EOTECH", //EOtech XPS3     
+					"rhsusf_acc_eotech_552", //EOtech M552     
+					"rhsusf_acc_LEUPOLDMK4", //Leupold Mk4 (3.5-10x40mm)*     
+					"rhsusf_acc_LEUPOLDMK4_2", //Leupold Mk4 (6.5-20x50mm)     
+					"rhsusf_acc_ELCAN", //M145 MGO Elcan     
+					"rhsusf_acc_ELCAN_PIP", //M145 MGO Elcan (PiP)     
+					"rhsusf_acc_ACOG", //M150 RCO ACOG     
+					"rhsusf_acc_ACOG_PIP", //M150 RCO ACOG (PiP)     
+					"rhsusf_acc_ACOG2", //M150 RCO ACOG (ARD)     
+					"rhsusf_acc_ACOG3", //M150 RCO ACOG (ARD/Lens Cover)     
+					"rhsusf_acc_ACOG_USMC", //AN/PVQ-31     
+					"rhsusf_acc_ACOG2_USMC", //AN/PVQ-31 (ARD)     
+					"rhsusf_acc_ACOG3_USMC", //AN/PVQ-31 (ARD/Lens Cover)         
+					"rhsusf_acc_compm4", //M68 CCO Aimpoint M4   
 				};
 				displayname="Optics Slot";
 				linkproxy="\A3\data_f\proxies\weapon_slots\TOP";
 				scope=0;
 			};
-			class PointerSlot: PointerSlot
-			{
-				
-			};
-			 class UnderBarrelSlot: UnderBarrelSlot 
-		    {
-	            
-		    };
+			class PointerSlot: PointerSlot {};
+			class UnderBarrelSlot: UnderBarrelSlot {};
 			mass = 80;
 		};
-		class ItemInfo
-		{
+		class ItemInfo {
 			priority = 1;
 			RMBhint = "MPT";
 			onHoverText = "TODO MPT DSS";

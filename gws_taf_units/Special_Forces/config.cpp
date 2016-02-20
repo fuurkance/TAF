@@ -1,29 +1,7 @@
-enum {
-     //  = 2,    // Error parsing: Empty enum name
-    DESTRUCTENGINE = 2,
-    DESTRUCTDEFAULT = 6,
-    DESTRUCTWRECK = 7,
-    DESTRUCTTREE = 3,
-    DESTRUCTTENT = 4,
-    STABILIZEDINAXISX = 1,
-    STABILIZEDINAXESXYZ = 4,
-    STABILIZEDINAXISY = 2,
-    STABILIZEDINAXESBOTH = 3,
-    DESTRUCTNO = 0,
-    STABILIZEDINAXESNONE = 0,
-    DESTRUCTMAN = 5,
-    DESTRUCTBUILDING = 1,
-};
-
 class CfgPatches {
-    class GWS_TAF_Special_Forces{
-        units[] = 
-
-        {
-            "GWS_TAF_LF_Rifleman_Light"	
-        };
-        weapons[] = 
-        {
+    class gws_taf_special_forces {
+        units[] = {"GWS_TAF_LF_Rifleman_Light"};
+        weapons[] = {
         	"GWS_TAF_Uniform_2014",
         	"GWS_TAF_Uniform_2014_2",
         	"GWS_TAF_ia_vest_01",
@@ -50,12 +28,9 @@ class CfgVehicleClasses {
     class TAF_special_forces {
         displayName = "Men";
     };
-  ;
-
 };
 
 class CfgVehicles {
-
     class I_Soldier_base_F;
     class I_Soldier_LAT_F;
     class I_Soldier_AR_F;
@@ -72,23 +47,16 @@ class CfgVehicles {
 
     class B_Kitbag_cbr;
 
-    class GWS_TAF_Kitbag_cbr: B_Kitbag_cbr
-    {
+    class GWS_TAF_Kitbag_cbr: B_Kitbag_cbr {
         scope=2;
         displayname="[TAF] Assault Pack Nano";
         author="Grey Wolf Studio";
         picture="-";
-        hiddenSelections[]=
-        {
-            "camo"
-        };
-        hiddenselectionstextures[]=
-        {
-            "\gws_taf_units\Special_Forces\data\GWS_TAF_Kitbag_cbr.paa"
-        };
+        hiddenSelections[]= {"camo"};
+        hiddenselectionstextures[]= {"\gws_taf_units\Special_Forces\data\GWS_TAF_Kitbag_cbr.paa"};
     };
 
-class GWS_TAF_SF_Rifleman_Light : I_Soldier_base_F {
+	class GWS_TAF_SF_Rifleman_Light : I_Soldier_base_F {
 		_generalMacro = "GWS_TAF_SF_Rifleman_Light";
 		author = "Grey Wolf Studio";
 		
@@ -160,18 +128,15 @@ class GWS_TAF_SF_Rifleman_Light : I_Soldier_base_F {
 		backpack = "GWS_TAF_Kitbag_cbr";
 	};
 };
-class cfgWeapons 
-{ 
+class CfgWeapons  { 
     class ItemCore; 
 
     class VestItem; 
-    class Vest_Camo_Base: ItemCore 
-    { 
+    class Vest_Camo_Base: ItemCore  { 
         class ItemInfo; 
     }; 
      
-    class gws_taf_carrier_vest: Vest_Camo_Base 
-    { 
+    class gws_taf_carrier_vest: Vest_Camo_Base  { 
         scope = 2; 
         author = "Grey Wolf Studio";
         displayName = "Custom Platecarrier"; 
@@ -179,8 +144,7 @@ class cfgWeapons
         model = "A3\Characters_F\BLUFOR\equip_b_Vest01"; 
         hiddenSelections[] = {"Camo"}; 
         hiddenSelectionsTextures[] = {"\gws_taf_units\Special_Forces\data\gws_taf_carrier_vest.paa"}; 
-        class ItemInfo: VestItem 
-        { 
+        class ItemInfo: VestItem  { 
             uniformModel = "A3\Characters_F\BLUFOR\equip_b_Vest01.p3d"; 
             containerClass = "Supply120"; 
             mass = 80; 
@@ -189,8 +153,7 @@ class cfgWeapons
             hiddenSelections[] = {"camo"}; 
         }; 
     };
-    class gws_taf_carrier_vest2: Vest_Camo_Base 
-    { 
+    class gws_taf_carrier_vest2: Vest_Camo_Base  { 
         scope = 2;
         author = "Grey Wolf Studio";
         displayName = "Custom Platecarrier Lite"; 
@@ -198,8 +161,7 @@ class cfgWeapons
         model = "A3\Characters_F\BLUFOR\equip_b_Vest02"; 
         hiddenSelections[] = {"Camo"}; 
         hiddenSelectionsTextures[] ={"\gws_taf_units\Special_Forces\data\gws_taf_carrier_vest.paa"};  
-        class ItemInfo: VestItem 
-        { 
+        class ItemInfo: VestItem  { 
             uniformModel = "A3\Characters_F\BLUFOR\equip_b_Vest02.p3d"; 
             containerClass = "Supply120"; 
             mass = 80; 
@@ -209,8 +171,7 @@ class cfgWeapons
         }; 
     };
 
-     class gws_taf_carrier_vest3: Vest_Camo_Base 
-    { 
+     class gws_taf_carrier_vest3: Vest_Camo_Base  { 
         scope = 2;
         author = "Grey Wolf Studio";
         displayName = "Custom Platecarrier Lite"; 
@@ -218,8 +179,7 @@ class cfgWeapons
         model = "A3\Charactrs_F_EPA\BLUFOR\equip_b_vest_kerry";  
         hiddenSelections[] = {"Camo"}; 
         hiddenSelectionsTextures[] ={"\gws_taf_units\Special_Forces\data\gws_taf_carrier_vest.paa"};  
-        class ItemInfo: VestItem 
-        { 
+        class ItemInfo: VestItem  { 
             uniformModel = "A3\Charactrs_F_EPA\BLUFOR\equip_b_vest_kerry"; 
             containerClass = "Supply120"; 
             mass = 80; 

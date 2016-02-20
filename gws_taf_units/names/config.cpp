@@ -1,7 +1,5 @@
-class CfgPatches
-{
-	class TS_TAF_Names
-	{
+class CfgPatches {
+	class ts_taf_names {
 		units[]={};
 		weapons[]={};
 		requiredVersion=1.3200001;
@@ -11,14 +9,10 @@ class CfgPatches
 		ammo[]={};
 	};
 };
-class CfgWorlds
-{
-	class GenericNames
-	{
-		class TAF_Names
-		{
-			class FirstNames
-			{
+class CfgWorlds {
+	class GenericNames {
+		class TAF_Names {
+			class FirstNames {
 				celikcan="CELIKCAN";
 				artug="ARTUG";
 				yatakdere="YATAKDERE";
@@ -50,8 +44,7 @@ class CfgWorlds
 				cicek="CICEK";
 				yan="YAN";
 			};
-			class LastNames
-			{
+			class LastNames {
 				ilker="ilker";
 				tolga="Tolga";
 				ozgur="Ozgur";
