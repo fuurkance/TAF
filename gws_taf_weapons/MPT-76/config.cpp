@@ -16,6 +16,7 @@ class MuzzleSlot;
 class PointerSlot;
 class asdg_OpticRail1913;
 class asdg_FrontSideRail;
+class CA_Magazine;
 
 class CfgMagazines {
 	class Default;
